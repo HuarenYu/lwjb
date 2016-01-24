@@ -1,17 +1,11 @@
-package com.lwjb.tour.models;
+package com.lwjb.tour.forms;
 
-public class User {
+public class LoginForm {
 	
-	private int id;
 	private String username;
 	private String password;
+	private boolean rememberMe;
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public String getUsername() {
 		return username;
 	}
@@ -24,4 +18,11 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public boolean isRememberMe() {
+		return rememberMe;
+	}
+	public void setRememberMe(boolean rememberMe) {
+		this.rememberMe = rememberMe;
+	}
+	
 }

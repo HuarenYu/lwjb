@@ -1,17 +1,17 @@
-package com.lwjb.tour.models;
+package com.lwjb.tour.forms;
 
-public class User {
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+public class RegisterForm {
 	
-	private int id;
+	@NotNull
+	@Size(min=1, max=16)
 	private String username;
+	@NotNull
+	@Size(min=6, max=100)
 	private String password;
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public String getUsername() {
 		return username;
 	}
@@ -24,4 +24,5 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
 }

@@ -2,9 +2,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<context:component-scan base-package="com.lwjb.tour">
@@ -30,13 +30,12 @@
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
-				<!-- 这里支持多种寻址方式：classpath和file -->
 				<value>classpath:jdbc.properties</value>
-				<!-- 推荐使用file的方式引入，这样可以将配置和代码分离 -->
 			</list>
 		</property>
 	</bean>
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
 		<property name="jdbcUrl"
 			value="jdbc:mysql://${jdbc.host}:${jdbc.port}/${jdbc.database}?useUnicode=true&amp;characterEncoding=utf8" />
@@ -54,7 +53,7 @@
 		<property name="configLocation" value="classpath:mybatisConfig.xml" />
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.lwjb.tour.mappers" />
+		<property name="basePackage" value="com.lwjb.tour.daos" />
 	</bean>
 	<!-- mybatis related... end -->
 
@@ -65,5 +64,32 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	<!-- transaction config related... end -->
+
+	<!-- shiro config -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/auth/login" />
+		<property name="unauthorizedUrl" value="/auth/unauthorized" />
+	</bean>
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="jdbcRealm" />
+		<property name="cacheManager" ref="cacheManager" />
+	</bean>
+	<bean id="jdbcRealm" class="org.apache.shiro.realm.jdbc.JdbcRealm">
+		<property name="dataSource" ref="dataSource" />
+		<property name="authenticationQuery" value="select password from user where username = ?" />
+		<property name="userRolesQuery"
+			value="select r.role_name from user u, user_role ur, role r where u.id = ur.user_id and r.id = ur.role_id and u.username = ?" />
+		<property name="permissionsQuery"
+			value="select p.permission_name from role r, role_permission rp, permission p where r.id = rp.role_id and p.id = rp.permission_id and r.role_name = ?" />
+		<property name="permissionsLookupEnabled" value="true" />
+		<property name="cacheManager" ref="cacheManager" />
+		<property name="credentialsMatcher" ref="passwordMatcher" />
+	</bean>
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+	<bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager" />
+	<bean id="passwordMatcher" class="org.apache.shiro.authc.credential.PasswordMatcher" />
+	<bean id="passwordService"
+		class="org.apache.shiro.authc.credential.DefaultPasswordService" />
 
 </beans>

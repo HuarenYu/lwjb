@@ -1,0 +1,20 @@
+body {
+  padding-top: 70px;
+}
+
+.copy-right {
+  text-align: center;
+}
+
+.items {
+  margin-top: 20px;
+}
+
+.thumbnail .caption .footer {
+  text-align: right;
+}
+
+.thumbnail .cover {
+  height: 300px;
+  overflow: hidden;
+}
