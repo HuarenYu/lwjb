@@ -18,3 +18,7 @@ body {
   height: 300px;
   overflow: hidden;
 }
+
+.item-details {
+  margin-top: 20px;
+}

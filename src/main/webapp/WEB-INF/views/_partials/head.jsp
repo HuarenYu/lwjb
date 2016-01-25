@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="/assets/dist/css/app.css">
   <script src="/assets/bower_components/jquery/dist/jquery.min.js"></script>
   <script src="/assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/assets/dist/js/common.js"></script>
 </head>
 <body>
   <div class="container">

@@ -3,7 +3,7 @@
 <%@ include file="../_partials/head.jsp" %>
 <%@ include file="../_partials/header.jsp" %>
 <div class="row">
-  <div class="col-sm-12">
+  <div class="col-xs-12 col-sm-9">
     <div class="index-carousel">
       <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
@@ -35,21 +35,77 @@
         </a>
       </div>
     </div>
-  </div>
-</div>
-<div class="row">
-  <div class="items">
-    <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="thumbnail">
-        <img src="/assets/dist/images/52.jpg" alt="...">
-        <div class="caption">
-          <h3>Thumbnail label</h3>
-          <p>...</p>
-          <p>
-            <a href="#" class="btn btn-primary" role="button">Button</a>
-            <a href="#" class="btn btn-default" role="button">Button</a>
-          </p>
+    
+    <div class="item-details">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">家园详情</h3>
         </div>
+        <div class="panel-body">
+          <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>日期</th>
+                  <th>体验项目</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">2016-02-06</th>
+                  <td>杀猪</td>
+                </tr>
+                <tr>
+                  <th scope="row">2016-02-07</th>
+                  <td>打粑粑</td>
+                </tr>
+                <tr>
+                  <th scope="row">2016-02-08</th>
+                  <td>春游</td>
+                </tr>
+                <tr>
+                  <th scope="row">2016-02-09</th>
+                  <td>听侗戏</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">立即预定</h3>
+      </div>
+      <div class="panel-body">
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>日期</th>
+                <th>体验项目</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">2016-02-06</th>
+                <td>杀猪</td>
+              </tr>
+              <tr>
+                <th scope="row">2016-02-07</th>
+                <td>打粑粑</td>
+              </tr>
+              <tr>
+                <th scope="row">2016-02-08</th>
+                <td>春游</td>
+              </tr>
+              <tr>
+                <th scope="row">2016-02-09</th>
+                <td>听侗戏</td>
+              </tr>
+            </tbody>
+          </table>
       </div>
     </div>
   </div>

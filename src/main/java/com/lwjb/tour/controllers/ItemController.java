@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(path = "/item")
 public class ItemController {
 
-	@RequestMapping(path = "/{itemId}", method = RequestMethod.GET)
-	public String item(@PathVariable long itemId) {
+	@RequestMapping(path = "", method = RequestMethod.GET)
+	public String index() {
 		return "item/item";
 	}
 	
-	@RequestMapping(path = "", method = RequestMethod.GET)
-	public String index() {
+	@RequestMapping(path = "/{itemId}", method = RequestMethod.GET)
+	public String item(@PathVariable long itemId) {
 		return "item/item";
 	}
 	
