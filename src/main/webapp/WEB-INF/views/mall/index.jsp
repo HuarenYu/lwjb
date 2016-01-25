@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ include file="_partials/head.jsp" %>
-<%@ include file="_partials/header.jsp" %>
+<%@ include file="../_partials/head.jsp" %>
+<%@ include file="../_partials/header.jsp" %>
 <div class="row">
   <div class="col-xs-12 col-sm-9">
     <div style="text-align: center;" class="jumbotron">
@@ -45,4 +45,4 @@
     </div>
   </div>
 </div>
-<%@ include file="_partials/footer.jsp" %>
+<%@ include file="../_partials/footer.jsp" %>
