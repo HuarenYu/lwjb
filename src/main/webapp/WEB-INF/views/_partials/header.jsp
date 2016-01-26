@@ -13,8 +13,9 @@
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li data-path="/"><a href="/">首页</a></li>
-        <li data-path="/item"><a href="/item">发现</a></li>
-        <li data-path="/product"><a href="/product">特产</a></li>
+        <li data-path="/item"><a href="/item">出发</a></li>
+        <li data-path="/post"><a href="/post">分享</a></li>
+        <li data-path="/mall"><a href="/mall">特产</a></li>
         <li data-path="/about"><a href="/about">关于</a></li>
       </ul>
     </div><!-- /.nav-collapse -->

@@ -4,7 +4,7 @@
 <%@ include file="../_partials/header.jsp" %>
 <div class="row">
   <div class="col-xs-12">
-    <p class="notice">美食精心准备中，敬请期待:)</p>
+    <p class="notice">暂无更多目的地，敬请期待:)</p>
   </div>
 </div>
 <%@ include file="../_partials/footer.jsp" %>

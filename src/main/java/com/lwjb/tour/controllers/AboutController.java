@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping(value = { "/about" })
+@RequestMapping(path = { "/about" })
 public class AboutController {
 	
 	private final Logger logger = LoggerFactory.getLogger(AboutController.class);
 	
 	@RequestMapping(path = { "" }, method = { RequestMethod.GET })
-	public String about(Model model) {
+	public String index(Model model) {
 		model.addAttribute("title", "关于我们");
 		return "about";
 	}

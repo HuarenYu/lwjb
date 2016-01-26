@@ -4,7 +4,7 @@
   <footer>
     <div class="container">
       <div class="col-sm-xs">
-        <p class="copy-right">&copy; 2016 tour.com</p>
+        <p class="copy-right">&copy; 2016 laiwj.com</p>
       </div>
     </div>
   </footer>

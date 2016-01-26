@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping(path = "/item")
-public class ItemController {
+@RequestMapping(path = "/post")
+public class PostController {
 
 	@RequestMapping(path = "", method = RequestMethod.GET)
 	public String index(Model model) {
-		model.addAttribute("title", "出发");
-		return "item/index";
+		model.addAttribute("title", "分享");
+		return "post/index";
 	}
 	
-	@RequestMapping(path = "/{itemId}", method = RequestMethod.GET)
+	@RequestMapping(path = "/{postId}", method = RequestMethod.GET)
 	public String item(@PathVariable long itemId, Model model) {
-		model.addAttribute("title", "家园详情");
-		return "item/item";
+		model.addAttribute("title", "分享");
+		return "post/post";
 	}
 	
 }
