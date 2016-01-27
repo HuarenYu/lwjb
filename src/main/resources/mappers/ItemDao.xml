@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lwjb.tour.daos.ItemDao">
+	<sql id="itemFields">id,name,price,description,details,images,booked_dates,shop_id,status,add_time,update_time</sql>
+	<select id="findAll"
+			resultType="Item">
+		select <include refid="itemFields"></include> from items
+	</select>
+	<insert id="save"
+			useGeneratedKeys="true" 
+			keyProperty="id"
+			parameterType="Item">
+		insert into items
+			(name, price, description, details, shop_id, status,add_time)
+		values
+			(#{name}, #{price}, #{description}, #{details}, 1, 1, now())
+	</insert>
+</mapper>
