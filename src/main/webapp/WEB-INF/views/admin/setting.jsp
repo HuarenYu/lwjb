@@ -4,12 +4,7 @@
 <%@ include file="../_partials/header.jsp" %>
   <div class="row">
     <div class="col-xs-12 col-sm-3">
-      <div class="list-group">
-        <a href="/admin/dashboard" class="list-group-item active">首页</a>
-        <a href="/admin/item" class="list-group-item">房屋管理</a>
-        <a href="/admin/order" class="list-group-item">订单管理</a>
-        <a href="/admin/setting" class="list-group-item">设置</a>
-      </div>
+      <%@ include file="_sideNav.jsp" %>
     </div>
     <div class="col-xs-12 col-sm-9">
       <div class="panel panel-default">

@@ -338,6 +338,8 @@
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
 				<configuration>
+					<charset>UTF-8</charset>
+					<uriEncoding>UTF-8</uriEncoding>
 					<port>8080</port>
 					<path>/</path>
 				</configuration>
@@ -348,7 +350,7 @@
 				<version>9.0.6.v20130930</version>
 				<configuration>
 					<webApp>
-						<contextPath>/${project.artifactId}</contextPath>
+						<contextPath>/</contextPath>
 					</webApp>
 				</configuration>
 			</plugin>

@@ -6,9 +6,9 @@ import com.lwjb.tour.models.User;
 
 public interface UserDao {
 	
-	public int save(User user);
+	public long save(User user);
 	
-	public int addRole(@Param("userId") int userId, @Param("roleId") int roleId);
+	public long addRole(@Param("userId") int userId, @Param("roleId") int roleId);
 	
 	public User findByUsername(@Param("username") String username);
 	

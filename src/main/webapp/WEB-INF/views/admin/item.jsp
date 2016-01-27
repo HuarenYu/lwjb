@@ -4,12 +4,7 @@
 <%@ include file="../_partials/header.jsp" %>
   <div class="row">
     <div class="col-xs-12 col-sm-3">
-      <div class="list-group">
-        <a href="/admin/dashboard" class="list-group-item">首页</a>
-        <a href="/admin/item" class="list-group-item active">房屋管理</a>
-        <a href="/admin/order" class="list-group-item">订单管理</a>
-        <a href="/admin/setting" class="list-group-item">设置</a>
-      </div>
+      <%@ include file="_sideNav.jsp" %>
     </div>
     <div class="col-xs-12 col-sm-9">
       <div class="panel panel-default">
@@ -17,13 +12,16 @@
           <h3 class="panel-title">房屋管理</h3>
         </div>
         <div class="panel-body">
+          <div class="action-bar">
+            <a href="/admin/item/add" class="btn btn-primary">添加</a>
+          </div>
           <table class="table table-hover">
             <thead>
               <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
+                <th>编号</th>
+                <th>名字</th>
+                <th>状态</th>
+                <th>操作</th>
               </tr>
             </thead>
             <tbody>

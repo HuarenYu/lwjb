@@ -71,13 +71,6 @@ public class AuthController {
 	@RequestMapping(value = { "/register" }, method = RequestMethod.POST)
 	public String processRegister(@Valid RegisterForm registerForm, BindingResult result, Model model) {
 		if (result.hasErrors()) {
-			
-			for (FieldError fe : result.getFieldErrors()) {
-				System.out.println(fe.getField() + "---" + fe.getDefaultMessage());
-			}
-			for (ObjectError oe : result.getGlobalErrors()) {
-				System.out.println("error:" + oe.getDefaultMessage());
-			}
 			model.addAttribute("title", "注册");
 			return "auth/register";
 		}

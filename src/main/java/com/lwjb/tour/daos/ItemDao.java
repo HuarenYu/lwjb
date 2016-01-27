@@ -8,5 +8,5 @@ public interface ItemDao {
 	
 	public List<Item> findAll();
 	
-	public void save(Item item);
+	public long save(Item item);
 }

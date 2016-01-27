@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.lwjb.tour.daos.ItemDao;
 import com.lwjb.tour.daos.UserDao;
 import com.lwjb.tour.exceptions.UserExistException;
+import com.lwjb.tour.forms.AddItemForm;
 import com.lwjb.tour.forms.LoginForm;
 import com.lwjb.tour.forms.RegisterForm;
 import com.lwjb.tour.models.Item;
@@ -33,8 +34,13 @@ public class ItemService {
 		return itemDao.findAll();
 	}
 	
-	public void save(Item item) {
-		itemDao.save(item);
+	public long save(AddItemForm addItemForm) {
+		Item item = new Item();
+		item.setName(addItemForm.getName());
+		item.setDescription(addItemForm.getDescription());
+		item.setDetails(addItemForm.getDetails());
+		item.setPrice(addItemForm.getPrice());
+		return itemDao.save(item);
 	}
 	
 }

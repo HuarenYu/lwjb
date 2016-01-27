@@ -24,18 +24,28 @@ public class AdminController {
 	@RequiresRoles("admin")
 	@RequestMapping(value = { "/item" }, method = { RequestMethod.GET })
 	public String item(Model model) {
+		model.addAttribute("title", "后台管理");
 		return "admin/item";
+	}
+	
+	@RequiresRoles("admin")
+	@RequestMapping(value = { "/item/add" }, method = { RequestMethod.GET })
+	public String itemAdd(Model model) {
+		model.addAttribute("title", "添加房屋");
+		return "admin/itemAdd";
 	}
 	
 	@RequiresRoles("admin")
 	@RequestMapping(value = { "/order" }, method = { RequestMethod.GET })
 	public String order(Model model) {
+		model.addAttribute("title", "订单管理");
 		return "admin/order";
 	}
 	
 	@RequiresRoles("admin")
 	@RequestMapping(value = { "/setting" }, method = { RequestMethod.GET })
 	public String setting(Model model) {
+		model.addAttribute("title", "设置");
 		return "admin/setting";
 	}
 	
