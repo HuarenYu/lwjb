@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.lwjb.tour.daos.UserDao">
-	<sql id="userField">username, password</sql>
+	<sql id="userField">
+		id,
+		username,
+		password,
+		email,
+		phone,
+		add_time,
+		update_time
+	</sql>
 	<insert id="save"
 			useGeneratedKeys="true" 
 			keyProperty="id"
-			parameterType="com.lwjb.tour.models.User">
+			parameterType="User">
 		insert into user
 			(username, password)
 		values
@@ -18,11 +26,12 @@
 			(#{userId}, #{roleId})
 	</insert>
 	<select id="findByUsername"
-			resultType="com.lwjb.tour.models.User">
-		select 
+			resultType="User">
+		select
 			id, username
-		from user
+		from
+			user
 		where
-			username={#username}
+			username=#{username}
 	</select>
 </mapper>

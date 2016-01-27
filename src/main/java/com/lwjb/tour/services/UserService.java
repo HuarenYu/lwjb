@@ -36,7 +36,7 @@ public class UserService {
 	}
 	
 	public void register(RegisterForm registerForm) throws UserExistException {
-		User registerUser = userDao.findyByName(registerForm.getUsername());
+		User registerUser = userDao.findByUsername(registerForm.getUsername());
 		if (registerUser != null) {
 			throw new UserExistException();
 		}

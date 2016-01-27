@@ -4,4 +4,10 @@
 	<settings>
 		<setting name="mapUnderscoreToCamelCase" value="true" />
 	</settings>
+	<typeAliases>
+		<typeAlias type="com.lwjb.tour.models.User" alias="User"/>
+		<typeAlias type="com.lwjb.tour.models.Shop" alias="Shop"/>
+		<typeAlias type="com.lwjb.tour.models.Order" alias="Order"/>
+		<typeAlias type="com.lwjb.tour.models.Item" alias="Item"/>
+	</typeAliases>
 </configuration>

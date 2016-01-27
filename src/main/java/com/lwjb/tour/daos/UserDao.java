@@ -10,6 +10,6 @@ public interface UserDao {
 	
 	public int addRole(@Param("userId") int userId, @Param("roleId") int roleId);
 	
-	public User findyByName(@Param("useranme") String username);
+	public User findByUsername(@Param("username") String username);
 	
 }
