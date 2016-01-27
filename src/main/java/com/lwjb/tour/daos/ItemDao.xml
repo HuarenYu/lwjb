@@ -15,14 +15,14 @@
 		update_time
 	</sql>
 	<select id="findAll"
-			resultType="com.lwjb.tour.models.Item">
-		select * from items
+			resultType="Item">
+		select (<include refid="itemFields"></include>) from items
 	</select>
 	<insert id="save"
-			parameterType="com.lwjb.tour.models.Item">
+			parameterType="Item">
 		insert into items
-			()
+			(<include refid="itemFields"></include>)
 		values
-			()
+			(NULL, #{name}, #{price}, #{description}, #{details}, #{images}, #{booked_dates}, #{shop_id}, #{status}, #{add_time}, #{update_time})
 	</insert>
 </mapper>

@@ -13,28 +13,30 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.lwjb.tour.daos.ItemDao;
+import com.lwjb.tour.daos.OrderDao;
 import com.lwjb.tour.daos.UserDao;
 import com.lwjb.tour.exceptions.UserExistException;
 import com.lwjb.tour.forms.LoginForm;
 import com.lwjb.tour.forms.RegisterForm;
 import com.lwjb.tour.models.Item;
+import com.lwjb.tour.models.Order;
 import com.lwjb.tour.models.User;
 
 @Service
 @Transactional
-public class ItemService {
+public class OrderService {
 	
 	@Autowired
-	private ItemDao itemDao;
+	private OrderDao orderDao;
 	
-	private static final Logger logger = LoggerFactory.getLogger(ItemService.class);
+	private static final Logger logger = LoggerFactory.getLogger(OrderService.class);
 	
-	public List<Item> findAll() {
-		return itemDao.findAll();
+	public List<Order> findAll() {
+		return orderDao.findAll();
 	}
 	
-	public void save(Item item) {
-		itemDao.save(item);
+	public void save(Order order) {
+		orderDao.save(order);
 	}
 	
 }

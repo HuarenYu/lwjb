@@ -1,5 +1,12 @@
 package com.lwjb.tour.daos;
 
-public interface OrderDao {
+import java.util.List;
 
+import com.lwjb.tour.models.Order;
+
+public interface OrderDao {
+	
+	public List<Order> findAll();
+	
+	public void save(Order order);
 }

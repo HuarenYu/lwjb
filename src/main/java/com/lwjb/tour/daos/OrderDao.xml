@@ -3,24 +3,25 @@
 <mapper namespace="com.lwjb.tour.daos.OrderDao">
 	<sql id="orderFields">
 		id,
-		name,
-		price,
-		description,
-		details,
-		images, 
-		booked_dates, 
-		shop_id, 
-		status, 
+		consumer_name,
+		consumer_phone,
+		consumer_id,
+		consumer_count,
+		booked_dates,
+		total_price,
+		user_id,
+		shop_id,
+		status,
 		add_time,
 		update_time
 	</sql>
 	<select id="findAll"
-			resultType="com.lwjb.tour.models.Item">
-		select * from items
+			resultType="Order">
+		select * from orders
 	</select>
 	<insert id="save"
-			parameterType="com.lwjb.tour.models.Item">
-		insert into items
+			parameterType="Order">
+		insert into orders
 			()
 		values
 			()
