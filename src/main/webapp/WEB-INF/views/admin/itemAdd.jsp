@@ -12,7 +12,7 @@
           <h3 class="panel-title">添加房屋</h3>
         </div>
         <div class="panel-body">
-          <form action="/item/add" method="post">
+          <form id="itemAddForm" action="/item/add" method="post" accept-charset="utf-8">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
             <div class="form-group">
               <label for="name">名字:</label>
@@ -48,5 +48,12 @@
   <script>
     //实例化编辑器
     var um = UM.getEditor('myEditor');
+    $('#itemAddForm').on('submit', function(e) {
+      e.preventDefault();
+      $form = $(this);
+      $.post('/item/add', $form.serialize(), function(resp) {
+        console.log(resp);
+      });
+    });
   </script>
 <%@ include file="../_partials/footer.jsp" %>

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.lwjb.tour.forms.AddItemForm;
+import com.lwjb.tour.models.Item;
 import com.lwjb.tour.services.ItemService;
 
 @Controller
@@ -42,14 +43,14 @@ public class ItemController {
 		if (result.hasErrors()) {
 			return "redirect:/admin/item/add";
 		}
-		Long id = null;
+		Item item = null;
 		try {
-			id = itemService.save(addItemForm);
+			item = itemService.save(addItemForm);
 		} catch(Exception e) {
 			logger.error("add item error", e);
 			return "redirect:/admin/item/add";
 		}
-		return "redirect:/item/" + id;
+		return "redirect:/item/" + item.getId();
 	}
 	
 }

@@ -34,13 +34,14 @@ public class ItemService {
 		return itemDao.findAll();
 	}
 	
-	public long save(AddItemForm addItemForm) {
+	public Item save(AddItemForm addItemForm) {
 		Item item = new Item();
 		item.setName(addItemForm.getName());
 		item.setDescription(addItemForm.getDescription());
 		item.setDetails(addItemForm.getDetails());
 		item.setPrice(addItemForm.getPrice());
-		return itemDao.save(item);
+		itemDao.save(item);
+		return item;
 	}
 	
 }
