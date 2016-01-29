@@ -20,33 +20,27 @@
               <tr>
                 <th>编号</th>
                 <th>名字</th>
-                <th>状态</th>
                 <th>操作</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                </tr>
-              <tr>
-              <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
+            <tbody id="itemList">
             </tbody>
           </table>
         </div>
       </div>
     </div>
   </div>
+<script>
+$(function() {
+  $(function() {
+    $.get('/item/list/1', function(res) {
+      var _itemList = '';
+      res.data.forEach(function(item) {
+        _itemList += tpl_item_admin_list(item);
+      });
+      $('#itemList').html(_itemList);
+    });
+  });
+});
+</script>
 <%@ include file="../_partials/footer.jsp" %>

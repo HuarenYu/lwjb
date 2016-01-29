@@ -4,8 +4,10 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class AddItemForm {
+public class UpdateItemForm {
 	
+	@NotNull
+	private long id;
 	@NotNull
 	@Size(min = 1, max = 45)
 	private String name;
@@ -16,6 +18,12 @@ public class AddItemForm {
 	@Min(0)
 	private double price;
 	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}

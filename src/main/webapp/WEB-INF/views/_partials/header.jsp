@@ -21,7 +21,3 @@
     </div><!-- /.nav-collapse -->
   </div><!-- /.container -->
 </nav><!-- /.navbar -->
-<script>
-  var csrf="${_csrf.parameterName}";
-  var csrfValue="${_csrf.token}";
-</script>

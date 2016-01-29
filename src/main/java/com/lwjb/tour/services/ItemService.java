@@ -18,6 +18,7 @@ import com.lwjb.tour.exceptions.UserExistException;
 import com.lwjb.tour.forms.AddItemForm;
 import com.lwjb.tour.forms.LoginForm;
 import com.lwjb.tour.forms.RegisterForm;
+import com.lwjb.tour.forms.UpdateItemForm;
 import com.lwjb.tour.models.Item;
 import com.lwjb.tour.models.User;
 
@@ -44,4 +45,11 @@ public class ItemService {
 		return item;
 	}
 	
+	public Item findById(long itemId) {
+		return itemDao.findById(itemId);
+	}
+
+	public void update(UpdateItemForm updateItemForm) {
+		itemDao.update(updateItemForm);
+	}
 }

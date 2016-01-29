@@ -9,6 +9,7 @@ public class JsonResponse<T> {
 	private T data;
 	
 	public static final int SUCCESS = 200;
+	public static final int ERROR = 400;
 	
 	public int getStatusCode() {
 		return statusCode;

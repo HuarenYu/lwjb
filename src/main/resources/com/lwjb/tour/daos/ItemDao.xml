@@ -6,6 +6,10 @@
 			resultType="Item">
 		select <include refid="itemFields"></include> from items
 	</select>
+	<select id="findById"
+			resultType="Item">
+		select <include refid="itemFields"></include> from items where id=#{itemId}
+	</select>
 	<insert id="save"
 			useGeneratedKeys="true" 
 			keyProperty="id"
@@ -15,4 +19,15 @@
 		values
 			(#{name}, #{price}, #{description}, #{details}, 1, 1, now())
 	</insert>
+	<update 
+		id="update"
+		parameterType="Item">
+	  update items set
+	  	name = #{name},
+	    description = #{description},
+	    details = #{details},
+	    price = #{price},
+	    update_time = now()
+	  where id = #{id}
+	</update>
 </mapper>

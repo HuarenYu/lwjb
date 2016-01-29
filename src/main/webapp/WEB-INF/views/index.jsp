@@ -11,93 +11,17 @@
   </div>
 </div>
 <div class="row">
-  <div class="item-list">
-    <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="card item">
-        <div class="cover">
-          <img src="/assets/dist/images/52.jpg" alt="...">
-        </div>
-        <div class="caption">
-          <h4>堂安小王家</h4>
-          <p>春节快乐游</p>
-          <div class="detail-btn">
-            <a href="/item/1" class="btn btn-default" role="button">查看详情</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="card item">
-        <div class="cover">
-          <img src="/assets/dist/images/52.jpg" alt="...">
-        </div>
-        <div class="caption">
-          <h4>堂安小王家</h4>
-          <p>春节快乐游</p>
-          <div class="detail-btn">
-            <a href="/item/1" class="btn btn-default" role="button">查看详情</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="card item">
-        <div class="cover">
-          <img src="/assets/dist/images/52.jpg" alt="...">
-        </div>
-        <div class="caption">
-          <h4>堂安小王家</h4>
-          <p>春节快乐游</p>
-          <div class="detail-btn">
-            <a href="/item/1" class="btn btn-default" role="button">查看详情</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="card item">
-        <div class="cover">
-          <img src="/assets/dist/images/52.jpg" alt="...">
-        </div>
-        <div class="caption">
-          <h4>堂安小王家</h4>
-          <p>春节快乐游</p>
-          <div class="detail-btn">
-            <a href="/item/1" class="btn btn-default" role="button">查看详情</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="card item">
-        <div class="cover">
-          <img src="/assets/dist/images/52.jpg" alt="...">
-        </div>
-        <div class="caption">
-          <h4>堂安小王家</h4>
-          <p>春节快乐游</p>
-          <div class="detail-btn">
-            <a href="/item/1" class="btn btn-default" role="button">查看详情</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="card item">
-        <div class="cover">
-          <img src="/assets/dist/images/52.jpg" alt="...">
-        </div>
-        <div class="caption">
-          <h4>堂安小王家</h4>
-          <p>春节快乐游</p>
-          <div class="detail-btn">
-            <a href="/item/1" class="btn btn-default" role="button">查看详情</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
+  <div class="item-list"></div>
 </div>
+<script>
+  $(function() {
+    $.get('/item/list/1', function(res) {
+      var _itemList = '';
+      res.data.forEach(function(item) {
+        _itemList += tpl_item(item);
+      });
+      $('.item-list').html(_itemList);
+    });
+  });
+</script>
 <%@ include file="_partials/footer.jsp" %>

@@ -17,6 +17,7 @@ import com.lwjb.tour.daos.OrderDao;
 import com.lwjb.tour.daos.UserDao;
 import com.lwjb.tour.exceptions.UserExistException;
 import com.lwjb.tour.forms.LoginForm;
+import com.lwjb.tour.forms.OrderForm;
 import com.lwjb.tour.forms.RegisterForm;
 import com.lwjb.tour.models.Item;
 import com.lwjb.tour.models.Order;
@@ -35,8 +36,8 @@ public class OrderService {
 		return orderDao.findAll();
 	}
 	
-	public void save(Order order) {
-		orderDao.save(order);
+	public void save(OrderForm orderForm) {
+		orderDao.save(orderForm);
 	}
 	
 }

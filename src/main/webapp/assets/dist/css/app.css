@@ -9,8 +9,20 @@ body {
   margin-bottom: 0;
 }
 
+.item-detail {
+  margin-bottom: 20px;
+}
+
 .item-detail .title {
   text-align: center;
+}
+
+.item-content {
+  padding: 10px;
+}
+
+.item-content img{
+  width: 100%;
 }
 
 .card {
@@ -59,10 +71,6 @@ body {
   margin-bottom: 20px;
 }
 
-.index-banner h3 {
-  margin-top: 0;
-}
-
 .order-box .table {
   margin-bottom: 0;
 }
@@ -74,6 +82,7 @@ body {
 
 .order-action {
   padding: 10px;
+  padding-top: 0;
   text-align: center;
 }
 
