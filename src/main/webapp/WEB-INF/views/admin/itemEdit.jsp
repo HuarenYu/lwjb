@@ -24,6 +24,10 @@
               <textarea class="form-control" name="description" id="description" rows="3" placeholder="给房屋写一段很有吸引力的简介吧:)">${item.description}</textarea>
             </div>
             <div class="form-group">
+              <label for="images">封面图:</label>
+              <input class="form-control" name="images" id="images" placeholder="封面图片url" value="${item.images}">
+            </div>
+            <div class="form-group">
               <label for="price">单价:</label>
               <input class="form-control" name="price" id="price" rows="3" placeholder="请输入每天收费" value="${item.price}">
             </div>

@@ -15,6 +15,8 @@ public class AddItemForm {
 	private String details;
 	@Min(0)
 	private double price;
+	@NotNull
+	private String images;
 	
 	public String getName() {
 		return name;
@@ -39,6 +41,12 @@ public class AddItemForm {
 	}
 	public void setPrice(double price) {
 		this.price = price;
+	}
+	public String getImages() {
+		return images;
+	}
+	public void setImages(String images) {
+		this.images = images;
 	}
 	
 }

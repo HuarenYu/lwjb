@@ -41,6 +41,7 @@ public class ItemService {
 		item.setDescription(addItemForm.getDescription());
 		item.setDetails(addItemForm.getDetails());
 		item.setPrice(addItemForm.getPrice());
+		item.setImages("[{\"src\":\""+addItemForm.getImages()+"\"}]");
 		itemDao.save(item);
 		return item;
 	}

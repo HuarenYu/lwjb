@@ -2,7 +2,6 @@ package com.lwjb.tour.controllers;
 
 import javax.validation.Valid;
 
-import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +31,7 @@ public class OrderController {
 		if (result.hasErrors()) {
 			jr.setStatusCode(JsonResponse.ERROR);
 			jr.setStatusMsg("参数错误");
+			return jr;
 		}
 		try {
 			orderService.save(orderForm);
