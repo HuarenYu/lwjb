@@ -30,7 +30,6 @@ body {
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.18);
   padding: 10px;
   border-radius: 2px;
-  overflow: hidden;
 }
 
 .card-default {
@@ -46,6 +45,7 @@ body {
 .card .card-heading .card-title {
   margin: 0;
   font-size: 16px;
+  font-weight: bold;
 }
 .card .card-body {
   padding: 10px;

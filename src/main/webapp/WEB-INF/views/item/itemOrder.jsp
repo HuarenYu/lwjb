@@ -3,8 +3,8 @@
 <%@ include file="../_partials/head.jsp" %>
 <%@ include file="../_partials/header.jsp" %>
 <div class="row">
-  <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-    <div class="order-box card card-default">
+  <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+    <div class="card card-default">
       <div class="card-heading">
         <h3 class="card-title">立即预定</h3>
       </div>
@@ -31,6 +31,20 @@
               <input id="phone" class="form-control" type="text" name="consumerPhone">
             </div>
           </div>
+          <div class="form-group">
+            <label for="consumerCount" class="col-sm-3 control-label">入住人数：</label>
+            <div class="col-sm-9">
+              <select name="consumerCount" id="consumerCount" class="form-control">
+                <option value="1">1</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="" class="col-sm-3 control-label">预订日期：</label>
+            <div class="col-sm-4"><input type="text" name="startDate" class="form-control" placeholder="入住日期"></div>
+            <div class="col-sm-1">-</div>
+            <div class="col-sm-4"><input type="text" name="endDate" class="form-control" placeholder="离开日期"></div>
+          </div>
         </form>
       </div>
       <div class="card-footer">
@@ -51,6 +65,16 @@
       }
       alert("提交成功，工作人员会尽快与你联系，安排行程。");
     });
+  });
+  $('input[name=startDate]').datetimepicker({
+    locale: 'zh-CN',
+    format: 'YYYY-MM-DD',
+    disabledDates: [moment('2016-02-10')]
+  });
+  $('input[name=endDate]').datetimepicker({
+    locale: 'zh-CN',
+    format: 'YYYY-MM-DD',
+    disabledDates: [moment('2016-02-10')]
   });
 </script>
 <%@ include file="../_partials/footer.jsp" %>

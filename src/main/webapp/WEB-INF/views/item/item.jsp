@@ -10,6 +10,14 @@
         ${item.details}
       </div>
     </div>
+    <div class="card card-default">
+      <div class="card-heading">
+        <h3 class="card-title">可预订日期</h3>
+      </div>
+      <div class="card-body">
+        <div id="datetimepicker12"></div>
+      </div>
+    </div>
   </div>
   <div class="col-xs-12 col-sm-3">
     <div class="order-box card card-default">
@@ -27,4 +35,14 @@
     </div>
   </div>
 </div>
+<script>
+  $(function() {
+    $('#datetimepicker12').datetimepicker({
+      locale: 'zh-CN',
+      format: 'YYYY-MM-DD',
+      inline: true,
+      disabledDates: [moment('2016-02-10')]
+    });
+  });
+</script>
 <%@ include file="../_partials/footer.jsp" %>
