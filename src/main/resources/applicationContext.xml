@@ -91,5 +91,17 @@
 	<bean id="passwordMatcher" class="org.apache.shiro.authc.credential.PasswordMatcher" />
 	<bean id="passwordService"
 		class="org.apache.shiro.authc.credential.DefaultPasswordService" />
-
+	
+	<bean id="wxMpInMemoryConfigStorage" class="me.chanjar.weixin.mp.api.WxMpInMemoryConfigStorage">
+		<property name="appId" value="test" />
+		<property name="secret" value="test" />
+		<property name="token" value="test" />
+		<property name="aesKey" value="test" />
+		<property name="oauth2redirectUri" value="test" />
+	</bean>
+	
+	<bean id="wxMpService" class="me.chanjar.weixin.mp.api.WxMpServiceImpl">
+		<property name="wxMpConfigStorage" ref="wxMpInMemoryConfigStorage"></property>
+	</bean>
+	
 </beans>
