@@ -12,8 +12,10 @@ public interface ItemDao {
 	public List<Item> findAll();
 	
 	public void save(Item item);
-	
+
 	public Item findById(@Param("itemId") long itemId);
+	
+	public Item findByIdForUpdate(@Param("itemId") long itemId);
 	
 	public void update(UpdateItemForm updateItemForm);
 }

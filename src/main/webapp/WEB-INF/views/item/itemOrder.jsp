@@ -15,7 +15,6 @@
             <label class="col-sm-3 control-label">预定：</label>
             <div class="col-sm-9">
               <input type="hidden" name="itemId" value="${item.id}">
-              <input type="hidden" name="comment" value="${item.name}">
               <input class="form-control" type="text" value="${item.name}" disabled>
             </div>
           </div>
@@ -42,7 +41,7 @@
           <div class="form-group">
             <label for="" class="col-sm-3 control-label">预订日期：</label>
             <div class="col-sm-4"><input type="text" name="startDate" class="form-control" placeholder="入住日期"></div>
-            <div class="col-sm-1">-</div>
+            <div class="col-sm-1 text-align-center">-</div>
             <div class="col-sm-4"><input type="text" name="endDate" class="form-control" placeholder="离开日期"></div>
           </div>
         </form>
@@ -56,7 +55,8 @@
   </div>
 </div>
 <script>
-  $form = $('#orderAddForm');
+  var bookedDates = ${item.bookedDates};
+  var $form = $('#orderAddForm');
   $('#orderBtn').on('click', function(e) {
     $.post('/order/add', $form.serialize(), function(resp) {
       if (resp.statusCode != 200) {
@@ -69,12 +69,12 @@
   $('input[name=startDate]').datetimepicker({
     locale: 'zh-CN',
     format: 'YYYY-MM-DD',
-    disabledDates: [moment('2016-02-10')]
+    disabledDates: bookedDates
   });
   $('input[name=endDate]').datetimepicker({
     locale: 'zh-CN',
     format: 'YYYY-MM-DD',
-    disabledDates: [moment('2016-02-10')]
+    disabledDates: bookedDates
   });
 </script>
 <%@ include file="../_partials/footer.jsp" %>

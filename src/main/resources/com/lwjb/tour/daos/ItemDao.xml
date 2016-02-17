@@ -10,6 +10,10 @@
 			resultType="Item">
 		select <include refid="itemFields"></include> from items where id=#{itemId}
 	</select>
+	<select id="findByIdForUpdate"
+			resultType="Item">
+		select <include refid="itemFields"></include> from items where id=#{itemId} for update
+	</select>
 	<insert id="save"
 			useGeneratedKeys="true" 
 			keyProperty="id"
