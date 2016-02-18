@@ -10,6 +10,8 @@
 	<context:component-scan base-package="com.lwjb.tour">
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.web.bind.annotation.ControllerAdvice" />
 	</context:component-scan>
 	<!-- CSRF protection. Here we only include the CsrfFilter instead of all 
 		of Spring Security. See http://docs.spring.io/spring-security/site/docs/3.2.x/reference/htmlsingle/#csrf 

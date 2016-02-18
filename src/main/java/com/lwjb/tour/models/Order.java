@@ -14,6 +14,7 @@ public class Order {
 	private long userId;
 	private long shopId;
 	private int status;
+	private String comment;
 	private Timestamp addTime;
 	private Timestamp updateTime;
 	
@@ -88,6 +89,12 @@ public class Order {
 	}
 	public void setUpdateTime(Timestamp updateTime) {
 		this.updateTime = updateTime;
+	}
+	public String getComment() {
+		return comment;
+	}
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 	
 }

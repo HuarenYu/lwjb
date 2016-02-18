@@ -33,6 +33,7 @@ public class OrderForm {
 	@Future
 	@DateTimeFormat(iso=ISO.DATE)
 	private Date endDate;
+	private String comment;
 	
 	public String getConsumerName() {
 		return consumerName;
@@ -88,6 +89,14 @@ public class OrderForm {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 	
 }

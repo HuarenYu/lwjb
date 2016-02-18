@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -43,7 +44,8 @@ public class AuthController {
 	}
 	
 	@RequestMapping(value = { "/login" }, method = RequestMethod.POST)
-	public String processLogin(LoginForm loginForm, HttpServletRequest request, Model model) {
+	public String processLogin(LoginForm loginForm, HttpServletRequest request, 
+								Model model, @RequestHeader(value="User-Agent") String userAgent) {
         try {
             userService.login(loginForm);
         } catch (AuthenticationException e) {
@@ -90,7 +92,8 @@ public class AuthController {
 	}
 	
 	@RequestMapping(value = { "/unauthorized" }, method = RequestMethod.GET)
-	public String unauthorized() {
+	public String unauthorized(@RequestHeader(value = "X-Requested-With", defaultValue = "") String XRequestWith, Model model) {
+		model.addAttribute("title", "消息");
 		return "auth/unauthorized";
 	}
 	
@@ -100,7 +103,6 @@ public class AuthController {
 		try {
 			wxMpService.menuCreate(null);
 		} catch (WxErrorException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return "redirect_url:" + wxMpService.oauth2buildAuthorizationUrl(WxConsts.OAUTH2_SCOPE_USER_INFO, null);

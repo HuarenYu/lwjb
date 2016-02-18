@@ -15,9 +15,9 @@
 			keyProperty="id"
 			parameterType="User">
 		insert into user
-			(username, password)
+			(username, password, add_time)
 		values
-			(#{username}, #{password})
+			(#{username}, #{password}, now())
 	</insert>
 	<insert id="addRole">
 		insert into user_role

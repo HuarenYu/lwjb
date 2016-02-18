@@ -44,6 +44,12 @@
             <div class="col-sm-1 text-align-center">-</div>
             <div class="col-sm-4"><input type="text" name="endDate" class="form-control" placeholder="离开日期"></div>
           </div>
+          <div class="form-group">
+            <label for="comment" class="col-sm-3 control-label">备注：</label>
+            <div class="col-sm-9">
+              <input id="comment" class="form-control" type="text" name="comment">
+            </div>
+          </div>
         </form>
       </div>
       <div class="card-footer">

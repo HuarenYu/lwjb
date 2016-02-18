@@ -2,6 +2,8 @@ package com.lwjb.tour.controllers;
 
 import javax.validation.Valid;
 
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.lwjb.tour.exceptions.InvalidBookDateException;
 import com.lwjb.tour.forms.OrderForm;
 import com.lwjb.tour.models.Order;
 import com.lwjb.tour.services.OrderService;
@@ -24,6 +27,7 @@ public class OrderController {
 	@Autowired
 	private OrderService orderService;
 	
+	@RequiresRoles(value = {"admin", "user"}, logical = Logical.OR)
 	@RequestMapping(path = "/add", method = RequestMethod.POST)
 	@ResponseBody
 	public JsonResponse<Order> addOrder(@Valid OrderForm orderForm, BindingResult result) {
@@ -35,7 +39,11 @@ public class OrderController {
 		}
 		try {
 			orderService.save(orderForm);
-		} catch(Exception e) {
+		} catch(InvalidBookDateException e) {
+			logger.error("添加订单失败", e);
+			jr.setStatusCode(JsonResponse.ERROR);
+			jr.setStatusMsg(e.getMessage());
+		} catch (Exception e) {
 			logger.error("添加订单失败", e);
 			jr.setStatusCode(JsonResponse.ERROR);
 			jr.setStatusMsg("数据库错误");
