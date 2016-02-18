@@ -25,7 +25,7 @@
             </div>
             <div class="form-group">
               <label for="images">封面图:</label>
-              <input class="form-control" name="images" id="images" placeholder="封面图片url" value="${item.images}">
+              <textarea class="form-control" name="images" id="images" placeholder="封面图片url" rows="1">${item.images}</textarea>
             </div>
             <div class="form-group">
               <label for="price">单价:</label>

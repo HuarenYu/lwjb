@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lwjb.tour.exceptions.UserExistException;
@@ -25,6 +26,8 @@ import com.lwjb.tour.services.UserService;
 import me.chanjar.weixin.common.api.WxConsts;
 import me.chanjar.weixin.common.exception.WxErrorException;
 import me.chanjar.weixin.mp.api.WxMpService;
+import me.chanjar.weixin.mp.bean.result.WxMpOAuth2AccessToken;
+import me.chanjar.weixin.mp.bean.result.WxMpUser;
 
 @Controller
 @RequestMapping(value = { "/auth" })
@@ -98,14 +101,19 @@ public class AuthController {
 	}
 	
 	@RequestMapping(path = "/oauth2/weixin", method = RequestMethod.GET)
-	@ResponseBody
 	public String wxLogin() {
+		return "redirect:" + wxMpService.oauth2buildAuthorizationUrl(WxConsts.OAUTH2_SCOPE_USER_INFO, null);
+	}
+	
+	@RequestMapping(path = "/login/weixin", method = RequestMethod.GET)
+	public String proccessWxLogin(@RequestParam String code) {
 		try {
-			wxMpService.menuCreate(null);
+			WxMpOAuth2AccessToken wxMpOAuth2AccessToken = wxMpService.oauth2getAccessToken(code);
+			WxMpUser wxMpUser = wxMpService.oauth2getUserInfo(wxMpOAuth2AccessToken, null);
 		} catch (WxErrorException e) {
-			e.printStackTrace();
+			logger.error("weixin login error", e);
 		}
-		return "redirect_url:" + wxMpService.oauth2buildAuthorizationUrl(WxConsts.OAUTH2_SCOPE_USER_INFO, null);
+		return "";
 	}
 	
 }
