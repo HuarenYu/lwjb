@@ -35,4 +35,11 @@
 	    update_time = now()
 	  where id = #{id}
 	</update>
+	<update 
+		id="updateBookedDates"
+		parameterType="Item">
+	  update items set
+	  	booked_dates = #{bookedDates},
+	  where id = #{id}
+	</update>
 </mapper>

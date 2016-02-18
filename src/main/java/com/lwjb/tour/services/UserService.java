@@ -50,8 +50,8 @@ public class UserService {
 	
 	public void logout() {
 		Subject user = SecurityUtils.getSubject();
-		user.logout();
 		logger.info("user {} logout", user.getPrincipal().toString());
+		user.logout();
 	}
 	
 }

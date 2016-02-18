@@ -79,11 +79,11 @@
 	</bean>
 	<bean id="jdbcRealm" class="org.apache.shiro.realm.jdbc.JdbcRealm">
 		<property name="dataSource" ref="dataSource" />
-		<property name="authenticationQuery" value="select password from user where username = ?" />
+		<property name="authenticationQuery" value="select password from users where username = ?" />
 		<property name="userRolesQuery"
-			value="select r.role_name from user u, user_role ur, role r where u.id = ur.user_id and r.id = ur.role_id and u.username = ?" />
+			value="select r.role_name from users u, user_role ur, roles r where u.id = ur.user_id and r.id = ur.role_id and u.username = ?" />
 		<property name="permissionsQuery"
-			value="select p.permission_name from role r, role_permission rp, permission p where r.id = rp.role_id and p.id = rp.permission_id and r.role_name = ?" />
+			value="select p.permission_name from roles r, role_permission rp, permissions p where r.id = rp.role_id and p.id = rp.permission_id and r.role_name = ?" />
 		<property name="permissionsLookupEnabled" value="true" />
 		<property name="cacheManager" ref="cacheManager" />
 		<property name="credentialsMatcher" ref="passwordMatcher" />
@@ -94,6 +94,7 @@
 	<bean id="passwordService"
 		class="org.apache.shiro.authc.credential.DefaultPasswordService" />
 	
+	<!-- weixin -->
 	<bean id="wxMpInMemoryConfigStorage" class="me.chanjar.weixin.mp.api.WxMpInMemoryConfigStorage">
 		<property name="appId" value="test" />
 		<property name="secret" value="test" />
@@ -101,7 +102,6 @@
 		<property name="aesKey" value="test" />
 		<property name="oauth2redirectUri" value="http://laiwj.com/auth/login/weixin" />
 	</bean>
-	
 	<bean id="wxMpService" class="me.chanjar.weixin.mp.api.WxMpServiceImpl">
 		<property name="wxMpConfigStorage" ref="wxMpInMemoryConfigStorage"></property>
 	</bean>

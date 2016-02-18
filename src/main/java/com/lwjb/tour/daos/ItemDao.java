@@ -18,4 +18,6 @@ public interface ItemDao {
 	public Item findByIdForUpdate(@Param("itemId") long itemId);
 	
 	public void update(UpdateItemForm updateItemForm);
+	
+	public void updateBookedDates(Item item);
 }
