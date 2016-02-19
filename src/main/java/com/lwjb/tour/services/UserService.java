@@ -45,7 +45,7 @@ public class UserService {
 		user.setPassword(passwordService.encryptPassword(registerForm.getPassword()));
 		userDao.save(user);
 		userDao.addRole(user.getId(), 2);
-		logger.info("user {} register id is", user.getUsername(), user.getId());
+		logger.info("user {} register id is {}", user.getUsername(), user.getId());
 	}
 	
 	public void logout() {

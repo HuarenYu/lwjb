@@ -20,10 +20,21 @@
 		select <include refid="orderFields"></include> from orders
 	</select>
 	<insert id="save"
+			useGeneratedKeys="true" 
+			keyProperty="id"
 			parameterType="Order">
 		insert into orders
 			(consumer_name, consumer_phone, consumer_id, consumer_count, booked_dates, total_price, user_id, shop_id, comment, status, add_time)
 		values
 			(#{consumerName}, #{consumerPhone}, 0, #{consumerCount}, #{bookedDates}, #{totalPrice}, #{userId}, #{shopId}, #{comment}, 1, now())
+	</insert>
+	<insert id="addOrderItem"
+			useGeneratedKeys="true" 
+			keyProperty="id"
+			parameterType="OrderItem">
+		insert into order_item
+			(order_id, item_id, price, buy_amount)
+		values
+			(#{orderId}, #{itemId}, #{price}, #{buyAmount})
 	</insert>
 </mapper>

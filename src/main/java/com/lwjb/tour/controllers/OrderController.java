@@ -2,7 +2,6 @@ package com.lwjb.tour.controllers;
 
 import javax.validation.Valid;
 
-import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +26,7 @@ public class OrderController {
 	@Autowired
 	private OrderService orderService;
 	
-	@RequiresRoles(value = {"admin", "user"}, logical = Logical.OR)
+	@RequiresRoles("user")
 	@RequestMapping(path = "/add", method = RequestMethod.POST)
 	@ResponseBody
 	public JsonResponse<Order> addOrder(@Valid OrderForm orderForm, BindingResult result) {
@@ -43,10 +42,12 @@ public class OrderController {
 			logger.error("添加订单失败", e);
 			jr.setStatusCode(JsonResponse.ERROR);
 			jr.setStatusMsg(e.getMessage());
+			return jr;
 		} catch (Exception e) {
 			logger.error("添加订单失败", e);
 			jr.setStatusCode(JsonResponse.ERROR);
 			jr.setStatusMsg("数据库错误");
+			return jr;
 		}
 		jr.setStatusCode(JsonResponse.SUCCESS);
 		return jr;

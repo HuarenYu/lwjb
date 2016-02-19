@@ -9,5 +9,6 @@
 		<typeAlias type="com.lwjb.tour.models.Shop" alias="Shop"/>
 		<typeAlias type="com.lwjb.tour.models.Order" alias="Order"/>
 		<typeAlias type="com.lwjb.tour.models.Item" alias="Item"/>
+		<typeAlias type="com.lwjb.tour.models.OrderItem" alias="OrderItem"/>
 	</typeAliases>
 </configuration>

@@ -44,6 +44,7 @@ public class ItemController {
 		return "item/item";
 	}
 	
+	@RequiresRoles("user")
 	@RequestMapping(path = "/{itemId}/order", method = RequestMethod.GET)
 	public String itemOrder(@PathVariable long itemId, Model model) {
 		Item item = itemService.findById(itemId);

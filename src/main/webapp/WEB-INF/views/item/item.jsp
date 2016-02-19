@@ -37,11 +37,12 @@
 </div>
 <script>
   $(function() {
+    var bookedDates = ${item.bookedDates};
     $('#datetimepicker12').datetimepicker({
       locale: 'zh-CN',
       format: 'YYYY-MM-DD',
       inline: true,
-      disabledDates: [moment('2016-02-10')]
+      disabledDates: bookedDates
     });
   });
 </script>
