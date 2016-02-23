@@ -11,8 +11,14 @@ public class UserController {
 	
 	@RequiresRoles("user")
 	@RequestMapping(path = "/dashboard", method = RequestMethod.GET)
-	public String userDashboard() {
+	public String index() {
 		return "user/dashboard";
+	}
+	
+	@RequiresRoles("user")
+	@RequestMapping(path = "/addItem", method = RequestMethod.GET)
+	public String addItem() {
+		return "user/addItem";
 	}
 	
 }

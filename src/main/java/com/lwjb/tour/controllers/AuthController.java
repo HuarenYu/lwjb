@@ -1,5 +1,7 @@
 package com.lwjb.tour.controllers;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -9,6 +11,7 @@ import org.apache.shiro.web.util.WebUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,11 +20,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.lwjb.tour.exceptions.UserExistException;
 import com.lwjb.tour.forms.LoginForm;
 import com.lwjb.tour.forms.RegisterForm;
 import com.lwjb.tour.services.UserService;
+import com.lwjb.tour.vos.JsonResponse;
 
 import me.chanjar.weixin.common.api.WxConsts;
 import me.chanjar.weixin.common.exception.WxErrorException;
@@ -98,6 +103,26 @@ public class AuthController {
 	public String unauthorized(@RequestHeader(value = "X-Requested-With", defaultValue = "") String XRequestWith, Model model) {
 		model.addAttribute("title", "消息");
 		return "auth/unauthorized";
+	}
+	
+	@RequestMapping(path = { "/xhr/unauthorized" }, method = { RequestMethod.GET, RequestMethod.POST })
+	@ResponseBody
+	@ResponseStatus(code = HttpStatus.UNAUTHORIZED)
+	public JsonResponse<String> unauthorizedXhr(@RequestHeader(value = "X-Requested-With", defaultValue = "") String XRequestWith) {
+		JsonResponse<String> jr = new JsonResponse<>();
+		jr.setStatusCode(JsonResponse.ERROR);
+		jr.setStatusMsg("无访问权限");
+		return jr;
+	}
+	
+	@RequestMapping(path = { "/xhr/unauthenticated" }, method = { RequestMethod.GET, RequestMethod.POST })
+	@ResponseBody
+	@ResponseStatus(code = HttpStatus.UNAUTHORIZED)
+	public JsonResponse<String> unauthenticatedXhr(@RequestHeader(value = "X-Requested-With", defaultValue = "") String XRequestWith) {
+		JsonResponse<String> jr = new JsonResponse<>();
+		jr.setStatusCode(JsonResponse.ERROR);
+		jr.setStatusMsg("需要登录");
+		return jr;
 	}
 	
 	@RequestMapping(path = "/oauth2/weixin", method = RequestMethod.GET)
