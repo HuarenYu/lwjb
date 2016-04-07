@@ -20,4 +20,7 @@ public interface ItemDao {
 	public void update(UpdateItemForm updateItemForm);
 	
 	public void updateBookedDates(Item item);
+	
+	public List<Item> findByShopId(@Param("shopId") long shopId);
+	
 }

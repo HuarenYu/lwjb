@@ -20,11 +20,16 @@ public class ExceptionControllerAdvice {
 	}
 	
 	@ExceptionHandler(UnauthenticatedException.class)
-	public String unauthenticatedExceptionHandler(UnauthenticatedException ex, HttpServletRequest req) {
-		String xRequestWith = req.getHeader("X-Requested-With");
+	public String unauthenticatedExceptionHandler(UnauthenticatedException ex, HttpServletRequest request) {
+		String xRequestWith = request.getHeader("X-Requested-With");
+		StringBuffer requestURL = request.getRequestURL();
+		if (request.getQueryString() != null) {
+		    requestURL.append("?").append(request.getQueryString());
+		}
+		String redirectURL = requestURL.toString();
 		if (xRequestWith != null && xRequestWith.equals("XMLHttpRequest")) {
 			return "forward:/auth/xhr/unauthenticated";
 		}
-		return "redirect:/auth/login";
+		return "redirect:/auth/login?next=" + redirectURL;
 	}
 }

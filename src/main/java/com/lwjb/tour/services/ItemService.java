@@ -20,6 +20,7 @@ import com.lwjb.tour.forms.LoginForm;
 import com.lwjb.tour.forms.RegisterForm;
 import com.lwjb.tour.forms.UpdateItemForm;
 import com.lwjb.tour.models.Item;
+import com.lwjb.tour.models.Shop;
 import com.lwjb.tour.models.User;
 
 @Service
@@ -48,6 +49,10 @@ public class ItemService {
 	
 	public Item findById(long itemId) {
 		return itemDao.findById(itemId);
+	}
+	
+	public List<Item> findByShop(Shop shop) {
+		return itemDao.findByShopId(shop.getId());
 	}
 
 	public void update(UpdateItemForm updateItemForm) {

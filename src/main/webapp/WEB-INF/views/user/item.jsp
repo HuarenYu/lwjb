@@ -9,3 +9,14 @@
     </div>
   </div>
 <%@ include file="../_partials/footer.jsp" %>
+<script>
+  $(function () {
+    $.get('/shop/user/item')
+    .done(function (resp) {
+      console.log(resp);
+    })
+    .fail(function (error) {
+      console.log(error);
+    });
+  });
+</script>

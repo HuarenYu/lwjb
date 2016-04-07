@@ -1,13 +1,9 @@
 package com.lwjb.tour.controllers;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.web.util.SavedRequest;
-import org.apache.shiro.web.util.WebUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,14 +42,17 @@ public class AuthController {
 	private WxMpService wxMpService;
 	
 	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
-	public String login(Model model) {
+	public String login(Model model, @RequestParam(value="next", defaultValue="") String next) {
 		model.addAttribute("title", "登陆");
+		model.addAttribute("next", next);
 		return "auth/login";
 	}
 	
 	@RequestMapping(value = { "/login" }, method = RequestMethod.POST)
-	public String processLogin(LoginForm loginForm, HttpServletRequest request, 
-								Model model, @RequestHeader(value="User-Agent") String userAgent) {
+	public String processLogin(LoginForm loginForm,
+								HttpServletRequest request,
+								Model model,
+								@RequestParam(value="next", defaultValue="") String next) {
         try {
             userService.login(loginForm);
         } catch (AuthenticationException e) {
@@ -61,12 +60,11 @@ public class AuthController {
         	model.addAttribute("title", "登陆");
             return "auth/login";
         }
-        SavedRequest savedRequest = WebUtils.getSavedRequest(request);
-        String redirectUrl = "";
-        if (savedRequest != null && savedRequest.getRequestUrl().equals("")) {
-        	savedRequest.getRequestUrl();
+        String redirectUrl;
+        if (next != null && !next.equals("")) {
+        	redirectUrl = next;
         } else {
-        	redirectUrl = "/admin/dashboard";
+        	redirectUrl = "/";
         }
         return "redirect:" + redirectUrl;
 	}

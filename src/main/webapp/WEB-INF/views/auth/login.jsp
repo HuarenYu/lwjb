@@ -11,6 +11,7 @@
       <div class="panel-body">
         <form class="form-horizontal" action="/auth/login" method="post">
           <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+          <input type="hidden" name="next" value="${next}">
           <div class="form-group">
             <label for="username" class="col-sm-3 control-label">用户名：</label>
             <div class="col-sm-9">

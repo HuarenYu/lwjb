@@ -3,6 +3,7 @@ package com.lwjb.tour.services;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authc.credential.PasswordService;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,8 +31,11 @@ public class UserService {
 	public void login(LoginForm loginForm) {
 		UsernamePasswordToken token = new UsernamePasswordToken(loginForm.getUsername(), loginForm.getPassword());
 		token.setRememberMe(loginForm.isRememberMe());
-		Subject user = SecurityUtils.getSubject();
-		user.login(token);
+		Subject subject = SecurityUtils.getSubject();
+		subject.login(token);
+		Session session = subject.getSession();
+		User user = userDao.findByUsername(loginForm.getUsername());
+		session.setAttribute("user", user);
 		logger.info("user {} login", loginForm.getUsername());
 	}
 	

@@ -44,6 +44,7 @@ public class ItemController {
 		return "item/item";
 	}
 	
+	@RequiresRoles("user")
 	@RequestMapping(path = "/{itemId}/order", method = RequestMethod.GET)
 	public String itemOrder(@PathVariable long itemId, Model model) {
 		Item item = itemService.findById(itemId);
@@ -65,6 +66,7 @@ public class ItemController {
 		try {
 			item = itemService.save(addItemForm);
 		} catch(Exception e) {
+			logger.error("add item error", e);
 			jr.setStatusCode(JsonResponse.ERROR);
 			jr.setStatusMsg("数据库错误");
 		}

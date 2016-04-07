@@ -27,5 +27,9 @@
     <beans:bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
         <beans:property name="securityManager" ref="securityManager"/>
     </beans:bean>
+    
+    <mvc:interceptors>
+    	<beans:bean id="globalVariableIntercept" class="com.lwjb.tour.controllers.GlobalVariableIntercept" />
+	</mvc:interceptors>
 	
 </beans:beans>

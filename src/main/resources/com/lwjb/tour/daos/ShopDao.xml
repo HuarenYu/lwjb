@@ -2,8 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.lwjb.tour.daos.ShopDao">
 	<sql id="shopFields">id,name,description,add_time,update_time</sql>
-	<select id="findById">
+	<select id="findById"
+			resultType="Shop">
 		select <include refid="shopFields"></include> from shops
 		where id=#{shopId}
+	</select>
+	
+	<select id="findByUserId"
+			resultType="Shop">
+		select <include refid="shopFields"></include> from shops
+		where user_id=#{userId}
 	</select>
 </mapper>
